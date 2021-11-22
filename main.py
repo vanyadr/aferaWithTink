@@ -4,7 +4,7 @@ import requests
 def get_price(symbols: list):
     """
     :param symbols: List of names of securities
-    :return: List like [('name', price), ('name2', price2), ...]
+    :return: List like [('name', price, 'latest trading day'), ('name2', price2, 'latest trading day2'), ...]
     """
     API = '82N6XECHCH9Z17R7'
     prices = []
@@ -14,7 +14,7 @@ def get_price(symbols: list):
         json = r.json()
         data = json['Global Quote']
         if len(data) > 0:
-            prices.append((data['01. symbol'], data['05. price']))
+            prices.append((data['01. symbol'], data['05. price'], data['07. latest trading day']))
     return prices
 
 
