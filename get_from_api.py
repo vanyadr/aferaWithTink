@@ -19,7 +19,7 @@ def get_price(symbols: list):
     return prices
 
 
-# print(get_price(['IBM', 'AAPL', 'DAX']))
+print(get_price(['IBM', 'AAPL', 'DAX']))
 
 
 def get_price_by_years(stock):
@@ -38,4 +38,4 @@ def get_price_by_years(stock):
     return res
 
 
-# print(get_price_by_years('IBM'))
+print(get_price_by_years('IBM'))
