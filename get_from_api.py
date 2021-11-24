@@ -29,13 +29,15 @@ def get_price_by_years(stock):
     """
     res = []
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol={stock}&outputsize=full&apikey={API}'
-    r = requests.get(url)
-    json = r.json()
-    data = json['Monthly Time Series']
-    keys = list(data.keys())
-    for i in range(0, len(keys), 12):
-        res.append((keys[i], data[keys[i]]['4. close']))
-    return res
-
+    try:
+        r = requests.get(url)
+        json = r.json()
+        data = json['Monthly Time Series']
+        keys = list(data.keys())
+        for i in range(0, len(keys), 12):
+            res.append((keys[i], data[keys[i]]['4. close']))
+        return res
+    except Exception as e:
+        return f'Ошибка {e}'
 
 # print(get_price_by_years('IBM'))
